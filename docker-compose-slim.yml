@@ -8,7 +8,7 @@ services:
       - "80:80"
   # Frontend 
   frontend:
-    image: iruby90/openmrs-ohri-distro:initial
+    image: histacoohri/openmrs-esm-ohri-distro
     environment:
       SPA_PATH: /openmrs/SPA_PATH
       API_URL: /openmrs
