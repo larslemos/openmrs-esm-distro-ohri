@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  # Proxy 
+  proxy:
+    build: ./proxy
+    ports:
+      - "80:80"
+  # Frontend 
+  frontend:
+    image: iruby90/openmrs-ohri-distro:initial
+    environment:
+      SPA_PATH: /openmrs/SPA_PATH
+      API_URL: /openmrs
+      SPA_CONFIG_URLS: null
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost/openmrs/spa" ]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
